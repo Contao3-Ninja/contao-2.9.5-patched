@@ -78,8 +78,8 @@ class CronJob extends Frontend
 
 			foreach ($GLOBALS['TL_CRON']['weekly'] as $callback)
 			{
-				$this->import($callback[0]);
-				$this->$callback[0]->$callback[1]();
+				$this->{$callback[0]};
+				$this->{$callback[0]}->{$callback[1]}();
 			}
 
 			$this->log('Weekly cron jobs complete', 'CronJobs run()', TL_CRON);
@@ -93,8 +93,8 @@ class CronJob extends Frontend
 
 			foreach ($GLOBALS['TL_CRON']['daily'] as $callback)
 			{
-				$this->import($callback[0]);
-				$this->$callback[0]->$callback[1]();
+				$this->{$callback[0]};
+				$this->{$callback[0]}->{$callback[1]}();
 			}
 
 			$this->log('Daily cron jobs complete', 'CronJobs run()', TL_CRON);
@@ -108,8 +108,8 @@ class CronJob extends Frontend
 
 			foreach ($GLOBALS['TL_CRON']['hourly'] as $callback)
 			{
-				$this->import($callback[0]);
-				$this->$callback[0]->$callback[1]();
+				$this->{$callback[0]};
+				$this->{$callback[0]}->{$callback[1]}();
 			}
 
 			$this->log('Hourly cron jobs complete', 'CronJobs run()', TL_CRON);

@@ -419,8 +419,8 @@ abstract class Controller extends System
 		{
 			foreach ($GLOBALS['TL_HOOKS']['getContentElement'] as $callback)
 			{
-				$this->import($callback[0]);
-				$strBuffer = $this->$callback[0]->$callback[1]($objElement, $strBuffer);
+				$this->{$callback[0]};
+				$strBuffer = $this->{$callback[0]}->{$callback[1]}($objElement, $strBuffer);
 			}
 		}
 
@@ -797,8 +797,8 @@ abstract class Controller extends System
 		{
 			foreach ($GLOBALS['TL_HOOKS']['getImage'] as $callback)
 			{
-				$this->import($callback[0]);
-				$return = $this->$callback[0]->$callback[1]($image, $width, $height, $mode, $strCacheName, $objFile);
+				$this->{$callback[0]};
+				$return = $this->{$callback[0]}->{$callback[1]}($image, $width, $height, $mode, $strCacheName, $objFile);
 
 				if (is_string($return))
 				{
@@ -1053,8 +1053,8 @@ abstract class Controller extends System
 		{
 			foreach ($GLOBALS['TL_HOOKS']['printArticleAsPdf'] as $callback)
 			{
-				$this->import($callback[0]);
-				$this->$callback[0]->$callback[1]($strArticle, $objArticle);
+				$this->{$callback[0]};
+				$this->{$callback[0]}->{$callback[1]}($strArticle, $objArticle);
 			}
 		}
 
@@ -1246,7 +1246,7 @@ abstract class Controller extends System
 					if (FE_USER_LOGGED_IN)
 					{
 						$this->import('FrontendUser', 'User');
-						$value = $this->User->$elements[1];
+						$value = $this->User->{$elements[1]};
 
 						if ($value == '')
 						{
@@ -1904,8 +1904,8 @@ abstract class Controller extends System
 					{
 						foreach ($GLOBALS['TL_HOOKS']['replaceInsertTags'] as $callback)
 						{
-							$this->import($callback[0]);
-							$varValue = $this->$callback[0]->$callback[1]($strTag);
+							$this->{$callback[0]};
+							$varValue = $this->{$callback[0]}->{$callback[1]}($strTag);
 
 							// Replace the tag and stop the loop
 							if ($varValue !== false)
@@ -2110,8 +2110,8 @@ abstract class Controller extends System
 		{
 			foreach ($GLOBALS['TL_HOOKS']['generateFrontendUrl'] as $callback)
 			{
-				$this->import($callback[0]);
-				$strUrl = $this->$callback[0]->$callback[1]($arrRow, $strParams, $strUrl);
+				$this->{$callback[0]};
+				$strUrl = $this->{$callback[0]}->{$callback[1]}($arrRow, $strParams, $strUrl);
 			}
 		}
 
@@ -2215,8 +2215,8 @@ abstract class Controller extends System
 		{
 			foreach ($GLOBALS['TL_HOOKS']['postDownload'] as $callback)
 			{
-				$this->import($callback[0]);
-				$this->$callback[0]->$callback[1]($strFile);
+				$this->{$callback[0]};
+				$this->{$callback[0]}->{$callback[1]}($strFile);
 			}
 		}
 
@@ -2245,8 +2245,8 @@ abstract class Controller extends System
 		{
 			foreach ($GLOBALS['TL_HOOKS']['loadDataContainer'] as $callback)
 			{
-				$this->import($callback[0]);
-				$this->$callback[0]->$callback[1]($strName);
+				$this->{$callback[0]};
+				$this->{$callback[0]}->{$callback[1]}($strName);
 			}
 		}
 
@@ -2307,7 +2307,7 @@ abstract class Controller extends System
 				$this->import($arrData['options_callback'][0]);
 			}
 
-			$arrData['options'] = $this->$arrData['options_callback'][0]->$arrData['options_callback'][1]($this);
+			$arrData['options'] = $this->{$arrData['options_callback'][0]}->{$arrData['options_callback'][1]}($this);
 		}
 
 		// Foreign key
@@ -2322,7 +2322,7 @@ abstract class Controller extends System
 
 				while($objOptions->next())
 				{
-					$arrData['options'][$objOptions->id] = $objOptions->$arrKey[1];
+					$arrData['options'][$objOptions->id] = $objOptions->{$arrKey[1]};
 				}
 			}
 		}
@@ -2679,8 +2679,8 @@ abstract class Controller extends System
 		{
 			foreach ($GLOBALS['TL_HOOKS']['removeOldFeeds'] as $callback)
 			{
-				$this->import($callback[0]);
-				$arrFeeds = array_merge($arrFeeds, $this->$callback[0]->$callback[1]());
+				$this->{$callback[0]};
+				$arrFeeds = array_merge($arrFeeds, $this->{$callback[0]}->{$callback[1]}());
 			}
 		}
 

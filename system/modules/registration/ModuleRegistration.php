@@ -97,8 +97,8 @@ class ModuleRegistration extends Module
 			{
 				if (is_array($callback))
 				{
-					$this->import($callback[0]);
-					$this->$callback[0]->$callback[1]();
+					$this->{$callback[0]};
+					$this->{$callback[0]}->{$callback[1]}();
 				}
 			}
 		}
@@ -231,11 +231,11 @@ class ModuleRegistration extends Module
 				{
 					foreach ($arrData['save_callback'] as $callback)
 					{
-						$this->import($callback[0]);
+						$this->{$callback[0]};
 
 						try
 						{
-							$varValue = $this->$callback[0]->$callback[1]($varValue, $this->User);
+							$varValue = $this->{$callback[0]}->{$callback[1]}($varValue, $this->User);
 						}
 						catch (Exception $e)
 						{
@@ -453,8 +453,8 @@ class ModuleRegistration extends Module
 		{
 			foreach ($GLOBALS['TL_HOOKS']['createNewUser'] as $callback)
 			{
-				$this->import($callback[0]);
-				$this->$callback[0]->$callback[1]($insertId, $arrData);
+				$this->{$callback[0]};
+				$this->{$callback[0]}->{$callback[1]}($insertId, $arrData);
 			}
 		}
 
@@ -498,8 +498,8 @@ class ModuleRegistration extends Module
 		{
 			foreach ($GLOBALS['TL_HOOKS']['activateAccount'] as $callback)
 			{
-				$this->import($callback[0]);
-				$this->$callback[0]->$callback[1]($objMember);
+				$this->{$callback[0]};
+				$this->{$callback[0]}->{$callback[1]}($objMember);
 			}
 		}
 

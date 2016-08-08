@@ -98,8 +98,8 @@ class ModulePersonalData extends Module
 			{
 				if (is_array($callback))
 				{
-					$this->import($callback[0]);
-					$this->$callback[0]->$callback[1]();
+					$this->{$callback[0]};
+					$this->{$callback[0]}->{$callback[1]}();
 				}
 			}
 		}
@@ -188,11 +188,11 @@ class ModulePersonalData extends Module
 				{
 					foreach ($arrData['save_callback'] as $callback)
 					{
-						$this->import($callback[0]);
+						$this->{$callback[0]};
 
 						try
 						{
-							$varValue = $this->$callback[0]->$callback[1]($varValue, $this->User);
+							$varValue = $this->{$callback[0]}->{$callback[1]}($varValue, $this->User);
 						}
 						catch (Exception $e)
 						{
@@ -225,8 +225,8 @@ class ModulePersonalData extends Module
 					{
 						foreach ($GLOBALS['TL_HOOKS']['setNewPassword'] as $callback)
 						{
-							$this->import($callback[0]);
-							$this->$callback[0]->$callback[1]($this->User, $varValue);
+							$this->{$callback[0]};
+							$this->{$callback[0]}->{$callback[1]}($this->User, $varValue);
 						}
 					}
 				}

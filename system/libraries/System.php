@@ -173,8 +173,8 @@ abstract class System
 		{
 			foreach ($GLOBALS['TL_HOOKS']['addLogEntry'] as $callback)
 			{
-				$this->import($callback[0]);
-				$this->$callback[0]->$callback[1]($strText, $strFunction, $strAction);
+				$this->{$callback[0]};
+				$this->{$callback[0]}->{$callback[1]}($strText, $strFunction, $strAction);
 			}
 		}
 	}
@@ -367,8 +367,8 @@ abstract class System
 		{
 			foreach ($GLOBALS['TL_HOOKS']['loadLanguageFile'] as $callback)
 			{
-				$this->import($callback[0]);
-				$this->$callback[0]->$callback[1]($strName, $strLanguage);
+				$this->{$callback[0]};
+				$this->{$callback[0]}->{$callback[1]}($strName, $strLanguage);
 			}
 		}
 

@@ -207,8 +207,8 @@ class Ajax extends Backend
 				{
 					foreach ($GLOBALS['TL_HOOKS']['executePreActions'] as $callback)
 					{
-						$this->import($callback[0]);
-						$this->$callback[0]->$callback[1]($this->strAction);
+						$this->{$callback[0]};
+						$this->{$callback[0]}->{$callback[1]}($this->strAction);
 					}
 				}
 				break;
@@ -361,8 +361,8 @@ class Ajax extends Backend
 				{
 					foreach ($GLOBALS['TL_HOOKS']['executePostActions'] as $callback)
 					{
-						$this->import($callback[0]);
-						$this->$callback[0]->$callback[1]($this->strAction, $dc);
+						$this->{$callback[0]};
+						$this->{$callback[0]}->{$callback[1]}($this->strAction, $dc);
 					}
 				}
 				exit; break;

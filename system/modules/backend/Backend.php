@@ -190,7 +190,7 @@ abstract class Backend extends Controller
 		elseif ($this->Input->get('key') && isset($arrModule[$this->Input->get('key')]))
 		{
 			$objCallback = new $arrModule[$this->Input->get('key')][0]();
-			$this->Template->main .= $objCallback->$arrModule[$this->Input->get('key')][1]($dc, $strTable, $arrModule);
+			$this->Template->main .= $objCallback->{$arrModule[$this->Input->get('key')][1]}($dc, $strTable, $arrModule);
 		}
 
 		// Default action

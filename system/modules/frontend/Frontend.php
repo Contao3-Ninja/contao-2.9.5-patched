@@ -101,8 +101,8 @@ abstract class Frontend extends Controller
 		{
 			foreach ($GLOBALS['TL_HOOKS']['getPageIdFromUrl'] as $callback)
 			{
-				$this->import($callback[0]);
-				$arrFragments = $this->$callback[0]->$callback[1]($arrFragments);
+				$this->{$callback[0]};
+				$arrFragments = $this->{$callback[0]}->{$callback[1]}($arrFragments);
 			}
 		}
 

@@ -209,12 +209,12 @@ class DataContainer extends Backend
 		// Input field callback
 		if (is_array($arrData['input_field_callback']))
 		{
-			if (!is_object($this->$arrData['input_field_callback'][0]))
+			if (!is_object($this->{$arrData['input_field_callback'][0]}))
 			{
 				$this->import($arrData['input_field_callback'][0]);
 			}
 
-			return $this->$arrData['input_field_callback'][0]->$arrData['input_field_callback'][1]($this, $xlabel);
+			return $this->{$arrData['input_field_callback'][0]}->{$arrData['input_field_callback'][1]}($this, $xlabel);
 		}
 
 		// Return if the widget class does not exists
@@ -318,8 +318,8 @@ class DataContainer extends Backend
 		{
 			foreach ($arrData['wizard'] as $callback)
 			{
-				$this->import($callback[0]);
-				$wizard .= $this->$callback[0]->$callback[1]($this);
+				$this->{$callback[0]};
+				$wizard .= $this->{$callback[0]}->{$callback[1]}($this);
 			}
 		}
 
@@ -465,7 +465,7 @@ class DataContainer extends Backend
 			if (is_array($v['button_callback']))
 			{
 				$this->import($v['button_callback'][0]);
-				$return .= $this->$v['button_callback'][0]->$v['button_callback'][1]($arrRow, $v['href'], $label, $title, $v['icon'], $attributes, $strTable, $arrRootIds, $arrChildRecordIds, $blnCircularReference, $strPrevious, $strNext);
+				$return .= $this->{$v['button_callback'][0]}->{$v['button_callback'][1]}($arrRow, $v['href'], $label, $title, $v['icon'], $attributes, $strTable, $arrRootIds, $arrChildRecordIds, $blnCircularReference, $strPrevious, $strNext);
 
 				continue;
 			}
@@ -532,7 +532,7 @@ class DataContainer extends Backend
 			if (is_array($v['button_callback']))
 			{
 				$this->import($v['button_callback'][0]);
-				$return .= $this->$v['button_callback'][0]->$v['button_callback'][1]($v['href'], $label, $title, $v['icon'], $attributes, $this->strTable, $this->root);
+				$return .= $this->{$v['button_callback'][0]}->{$v['button_callback'][1]}($v['href'], $label, $title, $v['icon'], $attributes, $this->strTable, $this->root);
 
 				continue;
 			}

@@ -196,8 +196,8 @@ class DC_Table extends DataContainer implements listable, editable
 			{
 				if (is_array($callback))
 				{
-					$this->import($callback[0]);
-					$this->$callback[0]->$callback[1]($this);
+					$this->{$callback[0]};
+					$this->{$callback[0]}->{$callback[1]}($this);
 				}
 			}
 		}
@@ -445,7 +445,7 @@ class DC_Table extends DataContainer implements listable, editable
 
 					if ($objKey->numRows)
 					{
-						$temp[] = $objKey->$chunks[1];
+						$temp[] = $objKey->{$chunks[1]};
 					}
 				}
 
@@ -702,8 +702,8 @@ class DC_Table extends DataContainer implements listable, editable
 		{
 			foreach ($GLOBALS['TL_DCA'][$this->strTable]['config']['oncut_callback'] as $callback)
 			{
-				$this->import($callback[0]);
-				$this->$callback[0]->$callback[1]($this);
+				$this->{$callback[0]};
+				$this->{$callback[0]}->{$callback[1]}($this);
 			}
 		}
 
@@ -832,8 +832,8 @@ class DC_Table extends DataContainer implements listable, editable
 				{
 					foreach ($GLOBALS['TL_DCA'][$this->strTable]['config']['oncopy_callback'] as $callback)
 					{
-						$this->import($callback[0]);
-						$this->$callback[0]->$callback[1]($insertID, $this);
+						$this->{$callback[0]};
+						$this->{$callback[0]}->{$callback[1]}($insertID, $this);
 					}
 				}
 
@@ -1284,8 +1284,8 @@ class DC_Table extends DataContainer implements listable, editable
 				{
 					if (is_array($callback))
 					{
-						$this->import($callback[0]);
-						$this->$callback[0]->$callback[1]($this);
+						$this->{$callback[0]};
+						$this->{$callback[0]}->{$callback[1]}($this);
 					}
 				}
 			}
@@ -1523,8 +1523,8 @@ class DC_Table extends DataContainer implements listable, editable
 						{
 							if (is_array($callback))
 							{
-								$this->import($callback[0]);
-								$this->$callback[0]->$callback[1]($this->intId, $this->strTable, $data, $this->Input->post('version'));
+								$this->{$callback[0]};
+								$this->{$callback[0]}->{$callback[1]}($this->intId, $this->strTable, $data, $this->Input->post('version'));
 							}
 						}
 					}
@@ -1658,8 +1658,8 @@ class DC_Table extends DataContainer implements listable, editable
 						{
 							if (is_array($callback))
 							{
-								$this->import($callback[0]);
-								$this->varValue = $this->$callback[0]->$callback[1]($this->varValue, $this);
+								$this->{$callback[0]};
+								$this->varValue = $this->{$callback[0]}->{$callback[1]}($this->varValue, $this);
 							}
 						}
 
@@ -1761,8 +1761,8 @@ class DC_Table extends DataContainer implements listable, editable
 			{
 				foreach ($GLOBALS['TL_DCA'][$this->strTable]['config']['onsubmit_callback'] as $callback)
 				{
-					$this->import($callback[0]);
-					$this->$callback[0]->$callback[1]($this);
+					$this->{$callback[0]};
+					$this->{$callback[0]}->{$callback[1]}($this);
 				}
 			}
 
@@ -2019,8 +2019,8 @@ window.addEvent(\'domready\', function()
 					{
 						foreach ($GLOBALS['TL_DCA'][$this->strTable]['fields'][$this->strField]['load_callback'] as $callback)
 						{
-							$this->import($callback[0]);
-							$this->varValue = $this->$callback[0]->$callback[1]($this->varValue, $this);
+							$this->{$callback[0]};
+							$this->varValue = $this->{$callback[0]}->{$callback[1]}($this->varValue, $this);
 						}
 					}
 
@@ -2044,8 +2044,8 @@ window.addEvent(\'domready\', function()
 					{
 						foreach ($GLOBALS['TL_DCA'][$this->strTable]['config']['onsubmit_callback'] as $callback)
 						{
-							$this->import($callback[0]);
-							$this->$callback[0]->$callback[1]($this);
+							$this->{$callback[0]};
+							$this->{$callback[0]}->{$callback[1]}($this);
 						}
 					}
 
@@ -2261,8 +2261,8 @@ window.addEvent(\'domready\', function()
 						{
 							foreach ($GLOBALS['TL_DCA'][$this->strTable]['config']['onsubmit_callback'] as $callback)
 							{
-								$this->import($callback[0]);
-								$this->$callback[0]->$callback[1]($this);
+								$this->{$callback[0]};
+								$this->{$callback[0]}->{$callback[1]}($this);
 							}
 						}
 
@@ -2511,8 +2511,8 @@ window.addEvent(\'domready\', function()
 		{
 			foreach ($arrData['save_callback'] as $callback)
 			{
-				$this->import($callback[0]);
-				$varValue = $this->$callback[0]->$callback[1]($varValue, $this);
+				$this->{$callback[0]};
+				$varValue = $this->{$callback[0]}->{$callback[1]}($varValue, $this);
 			}
 		}
 
@@ -2669,8 +2669,8 @@ window.addEvent(\'domready\', function()
 		{
 			foreach ($GLOBALS['TL_HOOKS']['reviseTable'] as $callback)
 			{
-				$this->import($callback[0]);
-				$status = $this->$callback[0]->$callback[1]($this->strTable, $new_records[$this->strTable], $ptable, $ctable);
+				$this->{$callback[0]};
+				$status = $this->{$callback[0]}->{$callback[1]}($this->strTable, $new_records[$this->strTable], $ptable, $ctable);
 
 				if ($status === true)
 				{
@@ -3304,7 +3304,7 @@ window.addEvent(\'domready\', function()
 
 					if ($objLabel->numRows)
 					{
-						$_v = $objLabel->$arrForeignKey[1];
+						$_v = $objLabel->{$arrForeignKey[1]};
 					}
 				}
 				elseif (is_array($GLOBALS['TL_DCA'][$this->ptable]['fields'][$v]['reference'][$_v]))
@@ -3684,7 +3684,7 @@ Backend.makeParentViewSortable("ul_' . CURRENT_ID . '");
 											   ->limit(1)
 											   ->execute($v['pid']);
 
-					$result[$k]['pid'] = $objField->$showFields[0];
+					$result[$k]['pid'] = $objField->{$showFields[0]};
 				}
 
 				$aux = array();
@@ -4492,7 +4492,7 @@ Backend.makeParentViewSortable("ul_' . CURRENT_ID . '");
 
 						if ($objShowFields->numRows)
 						{
-							$vv = $objShowFields->$showFields[0];
+							$vv = $objShowFields->{$showFields[0]};
 						}
 					}
 
@@ -4507,7 +4507,7 @@ Backend.makeParentViewSortable("ul_' . CURRENT_ID . '");
 
 						if ($objParent->numRows)
 						{
-							$vv = $objParent->$key[1];
+							$vv = $objParent->{$key[1]};
 						}
 					}
 
@@ -4596,7 +4596,7 @@ Backend.makeParentViewSortable("ul_' . CURRENT_ID . '");
 
 			if ($objParent->numRows)
 			{
-				$remoteNew = $objParent->$key[1];
+				$remoteNew = $objParent->{$key[1]};
 			}
 		}
 		elseif (in_array($mode, array(1, 2)))

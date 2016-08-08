@@ -171,7 +171,7 @@ abstract class User extends Model
 				foreach ($GLOBALS['TL_HOOKS']['importUser'] as $callback)
 				{
 					$this->import($callback[0], 'objImport', true);
-					$blnLoaded = $this->objImport->$callback[1]($this->Input->post('username'), $this->Input->post('password'), $this->strTable);
+					$blnLoaded = $this->objImport->{$callback[1]}($this->Input->post('username'), $this->Input->post('password'), $this->strTable);
 
 					// Load successfull
 					if ($blnLoaded === true)
@@ -252,7 +252,7 @@ abstract class User extends Model
 			foreach ($GLOBALS['TL_HOOKS']['checkCredentials'] as $callback)
 			{
 				$this->import($callback[0], 'objAuth', true);
-				$blnAuthenticated = $this->objAuth->$callback[1]($this->Input->post('username'), $this->Input->post('password'), $this);
+				$blnAuthenticated = $this->objAuth->{$callback[1]}($this->Input->post('username'), $this->Input->post('password'), $this);
 
 				// Authentication successfull
 				if ($blnAuthenticated === true)
