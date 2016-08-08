@@ -47,7 +47,7 @@ class StyleSheets extends Backend
 	{
 		parent::__construct();
 
-		$this->import('String');
+		$this->import('StringUtil');
 		$this->import('Files');
 	}
 
@@ -192,7 +192,7 @@ class StyleSheets extends Backend
 		}
 
 		// Selector
-		$arrSelector = trimsplit(',', $this->String->decodeEntities($row['selector']));
+		$arrSelector = trimsplit(',', $this->StringUtil->decodeEntities($row['selector']));
 		$return .= "\n" . implode(($blnWriteToFile ? ',' : ",\n"), $arrSelector) . "\n{";
 
 		// Size and position
@@ -521,7 +521,7 @@ class StyleSheets extends Backend
 		// Custom code
 		if ($row['own'] != '')
 		{
-			$own = preg_split('/[\n\r]+/i', trim($this->String->decodeEntities($row['own'])));
+			$own = preg_split('/[\n\r]+/i', trim($this->StringUtil->decodeEntities($row['own'])));
 			$return .= "\n\t" . implode("\n\t", $own);
 		}
 

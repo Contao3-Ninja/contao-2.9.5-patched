@@ -30,14 +30,14 @@
 
 
 /**
- * Class String
+ * Class StringUtil
  *
  * Provide methods to manipulate strings.
  * @copyright  Leo Feyer 2005-2011
  * @author     Leo Feyer <http://www.contao.org>
  * @package    Library
  */
-class String
+class StringUtil
 {
 
 	/**
@@ -67,7 +67,7 @@ class String
 	{
 		if (!is_object(self::$objInstance))
 		{
-			self::$objInstance = new String();
+			self::$objInstance = new StringUtil();
 		}
 
 		return self::$objInstance;

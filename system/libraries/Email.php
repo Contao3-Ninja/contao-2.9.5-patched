@@ -132,7 +132,7 @@ class Email extends System
 	 */
 	public function __construct()
 	{
-		$this->import('String');
+		$this->import('StringUtil');
 		$this->strCharset = $GLOBALS['TL_CONFIG']['characterSet'];
 
 		// Instantiate mailer
@@ -504,7 +504,7 @@ class Email extends System
 		{
 			if (!is_array($varRecipients))
 			{
-				$varRecipients = $this->String->splitCsv($varRecipients);
+				$varRecipients = $this->StringUtil->splitCsv($varRecipients);
 			}
 
 			// Support friendly name addresses and internationalized domain names

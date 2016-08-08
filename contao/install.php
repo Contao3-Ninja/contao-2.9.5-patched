@@ -59,7 +59,7 @@ class InstallTool extends Controller
 	 */
 	public function __construct()
 	{
-		$this->import('String');
+		$this->import('StringUtil');
 		parent::__construct();
 
 		$GLOBALS['TL_CONFIG']['showHelp'] = false;

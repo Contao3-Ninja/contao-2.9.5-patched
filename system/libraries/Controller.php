@@ -1212,9 +1212,9 @@ abstract class Controller extends System
 				case 'email':
 					if (strlen($elements[1]))
 					{
-						$this->import('String');
+						$this->import('StringUtil');
 
-						$strEmail = $this->String->encodeEmail($elements[1]);
+						$strEmail = $this->StringUtil->encodeEmail($elements[1]);
 						$arrCache[$strTag] = '<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;' . $strEmail . '">' . preg_replace('/\?.*$/', '', $strEmail) . '</a>';
 					}
 					break;
@@ -1776,10 +1776,10 @@ abstract class Controller extends System
 					// Take arguments
 					if (strpos($elements[1], '?') !== false)
 					{
-						$this->import('String');
+						$this->import('StringUtil');
 
 						$arrChunks = explode('?', urldecode($elements[1]), 2);
-						$strSource = $this->String->decodeEntities($arrChunks[1]);
+						$strSource = $this->StringUtil->decodeEntities($arrChunks[1]);
 						$strSource = str_replace('[&]', '&', $strSource);
 						$arrParams = explode('&', $strSource);
 
@@ -1866,10 +1866,10 @@ abstract class Controller extends System
 					// Take arguments and add them to the $_GET array
 					if (strpos($elements[1], '?') !== false)
 					{
-						$this->import('String');
+						$this->import('StringUtil');
 
 						$arrChunks = explode('?', urldecode($elements[1]));
-						$strSource = $this->String->decodeEntities($arrChunks[1]);
+						$strSource = $this->StringUtil->decodeEntities($arrChunks[1]);
 						$strSource = str_replace('[&]', '&', $strSource);
 						$arrParams = explode('&', $strSource);
 

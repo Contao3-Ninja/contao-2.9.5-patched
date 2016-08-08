@@ -72,7 +72,7 @@ class ModuleFlash extends Module
 	 */
 	protected function compile()
 	{
-		$this->import('String');
+		$this->import('StringUtil');
 
 		$this->Template->src = $this->singleSRC;
 		$this->Template->href = ($this->source == 'external') ? $this->url : $this->singleSRC;
@@ -81,7 +81,7 @@ class ModuleFlash extends Module
 		$this->Template->transparent = $this->transparent ? true : false;
 		$this->Template->interactive = $this->interactive ? true : false;
 		$this->Template->flashId = strlen($this->flashID) ? $this->flashID : 'swf_' . $this->id;
-		$this->Template->fsCommand = '  ' . preg_replace('/[\n\r]/', "\n  ", $this->String->decodeEntities($this->flashJS));
+		$this->Template->fsCommand = '  ' . preg_replace('/[\n\r]/', "\n  ", $this->StringUtil->decodeEntities($this->flashJS));
 		$this->Template->flashvars = 'URL=' . $this->Environment->base;
 		$this->Template->version = strlen($this->version) ? $this->version : '6.0.0';
 
@@ -101,7 +101,7 @@ class ModuleFlash extends Module
 
 		if (strlen($this->flashvars))
 		{
-			$this->Template->flashvars .= '&' . $this->String->decodeEntities($this->flashvars);
+			$this->Template->flashvars .= '&' . $this->StringUtil->decodeEntities($this->flashvars);
 		}
 	}
 }

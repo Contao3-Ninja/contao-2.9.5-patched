@@ -288,9 +288,9 @@ class ModuleSearch extends Module
 				// Shorten context and highlight keywords
 				if (count($arrContext))
 				{
-					$this->import('String');
+					$this->import('StringUtil');
 
-					$objTemplate->context = trim($this->String->substrHtml(implode('…', $arrContext), $this->totalLength));
+					$objTemplate->context = trim($this->StringUtil->substrHtml(implode('…', $arrContext), $this->totalLength));
 					$objTemplate->context = preg_replace('/(\PL)(' . implode('|', $arrMatches) . ')(\PL)/ui', '$1<span class="highlight">$2</span>$3', $objTemplate->context);
 
 					$objTemplate->hasContext = true;

@@ -107,7 +107,7 @@ abstract class Events extends Module
 			return array();
 		}
 
-		$this->import('String');
+		$this->import('StringUtil');
 
 		$time = time();
 		$this->arrEvents = array();
@@ -254,7 +254,7 @@ abstract class Events extends Module
 		$arrEvent['href'] = $this->generateEventUrl($objEvents, $strUrl);
 		$arrEvent['target'] = (($objEvents->source == 'external' && $objEvents->target) ? LINK_NEW_WINDOW : '');
 		$arrEvent['class'] = ($objEvents->cssClass != '') ? ' ' . $objEvents->cssClass : '';
-		$arrEvent['details'] = $this->String->encodeEmail($objEvents->details);
+		$arrEvent['details'] = $this->StringUtil->encodeEmail($objEvents->details);
 		$arrEvent['start'] = $intStart;
 		$arrEvent['end'] = $intEnd;
 
@@ -269,7 +269,7 @@ abstract class Events extends Module
 		(
 			array('<u>', '</u>', '</p>', '<br /><br />', ' target="_self"'),
 			array('<span style="text-decoration:underline;">', '</span>', "</p>\n", "<br /><br />\n", ''),
-			$this->String->encodeEmail($arrEvent['details'])
+			$this->StringUtil->encodeEmail($arrEvent['details'])
 		);
 
 		$this->arrEvents[$intKey][$intStart][] = $arrEvent;
@@ -303,11 +303,11 @@ abstract class Events extends Module
 		{
 			// Link to an external page
 			case 'external':
-				$this->import('String');
+				$this->import('StringUtil');
 
 				if (substr($objEvent->url, 0, 7) == 'mailto:')
 				{
-					return $this->String->encodeEmail($objEvent->url);
+					return $this->StringUtil->encodeEmail($objEvent->url);
 				}
 				else
 				{

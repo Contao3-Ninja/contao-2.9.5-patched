@@ -52,11 +52,11 @@ class ContentHyperlink extends ContentElement
 	 */
 	protected function compile()
 	{
-		$this->import('String');
+		$this->import('StringUtil');
 
 		if (substr($this->url, 0, 7) == 'mailto:')
 		{
-			$this->url = $this->String->encodeEmail($this->url);
+			$this->url = $this->StringUtil->encodeEmail($this->url);
 		}
 		else
 		{

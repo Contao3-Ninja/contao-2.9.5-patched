@@ -52,14 +52,14 @@ class ContentText extends ContentElement
 	 */
 	protected function compile()
 	{
-		$this->import('String');
+		$this->import('StringUtil');
 
 		// Clean RTE output
 		$this->Template->text = str_ireplace
 		(
 			array('<u>', '</u>', '</p>', '<br /><br />', ' target="_self"'),
 			array('<span style="text-decoration:underline;">', '</span>', "</p>\n", "<br /><br />\n", ''),
-			$this->String->encodeEmail($this->text)
+			$this->StringUtil->encodeEmail($this->text)
 		);
 
 		$this->Template->addImage = false;

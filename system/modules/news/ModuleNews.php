@@ -100,7 +100,7 @@ abstract class ModuleNews extends Module
 			return array();
 		}
 
-		$this->import('String');
+		$this->import('StringUtil');
 
 		$arrArticles = array();
 		$limit = $objArticles->numRows;
@@ -147,7 +147,7 @@ abstract class ModuleNews extends Module
 				(
 					array('<u>', '</u>', '</p>', '<br /><br />', ' target="_self"'),
 					array('<span style="text-decoration:underline;">', '</span>', "</p>\n", "<br /><br />\n", ''),
-					$this->String->encodeEmail($objArticles->text)
+					$this->StringUtil->encodeEmail($objArticles->text)
 				);
 			}
 
@@ -270,11 +270,11 @@ abstract class ModuleNews extends Module
 		{
 			// Link to external page
 			case 'external':
-				$this->import('String');
+				$this->import('StringUtil');
 
 				if (substr($objArticle->url, 0, 7) == 'mailto:')
 				{
-					self::$arrUrlCache[$strCacheKey] = $this->String->encodeEmail($objArticle->url);
+					self::$arrUrlCache[$strCacheKey] = $this->StringUtil->encodeEmail($objArticle->url);
 				}
 				else
 				{
@@ -357,8 +357,8 @@ abstract class ModuleNews extends Module
 		// Encode e-mail addresses
 		if (substr($objArticle->url, 0, 7) == 'mailto:')
 		{
-			$this->import('String');
-			$objArticle->url = $this->String->encodeEmail($objArticle->url);
+			$this->import('StringUtil');
+			$objArticle->url = $this->StringUtil->encodeEmail($objArticle->url);
 		}
 
 		// Ampersand URIs

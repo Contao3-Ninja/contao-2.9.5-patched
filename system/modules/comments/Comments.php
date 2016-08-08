@@ -227,7 +227,7 @@ class Comments extends Frontend
 		// Add the comment
 		if ($this->Input->post('FORM_SUBMIT') == $strFormId && !$doNotSubmit)
 		{
-			$this->import('String');
+			$this->import('StringUtil');
 			$strWebsite = $arrWidgets['website']->value;
 
 			// Add http:// to the website
@@ -290,7 +290,7 @@ class Comments extends Frontend
 
 			// Convert the comment to plain text
 			$strComment = strip_tags($strComment);
-			$strComment = $this->String->decodeEntities($strComment);
+			$strComment = $this->StringUtil->decodeEntities($strComment);
 			$strComment = str_replace(array('[&]', '[lt]', '[gt]'), array('&', '<', '>'), $strComment);
 
 			// Add comment details
@@ -379,7 +379,7 @@ class Comments extends Frontend
 		// Encode e-mail addresses
 		if (strpos($strComment, 'mailto:') !== false)
 		{
-			$strComment = $this->String->encodeEmail($strComment);
+			$strComment = $this->StringUtil->encodeEmail($strComment);
 		}
 
 		return $strComment;

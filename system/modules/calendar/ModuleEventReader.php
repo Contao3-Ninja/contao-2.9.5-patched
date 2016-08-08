@@ -180,14 +180,14 @@ class ModuleEventReader extends Events
 		$objTemplate->recurring = $recurring;
 		$objTemplate->until = $until;
 
-		$this->import('String');
+		$this->import('StringUtil');
 
 		// Clean RTE output
 		$objTemplate->details = str_ireplace
 		(
 			array('<u>', '</u>', '</p>', '<br /><br />', ' target="_self"'),
 			array('<span style="text-decoration:underline;">', '</span>', "</p>\n", "<br /><br />\n", ''),
-			$this->String->encodeEmail($objEvent->details)
+			$this->StringUtil->encodeEmail($objEvent->details)
 		);
 
 		$objTemplate->addImage = false;

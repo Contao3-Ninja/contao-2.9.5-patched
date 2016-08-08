@@ -857,7 +857,7 @@ class tl_content extends Backend
 	 */
 	public function getAlias()
 	{
-		$this->import('String');
+		$this->import('StringUtil');
 
 		$arrPids = array();
 		$arrAlias = array();
@@ -888,8 +888,8 @@ class tl_content extends Backend
 		{
 			$arrHeadline = deserialize($objAlias->headline, true);
 
-			$headline = $this->String->substr(preg_replace('/[\n\r\t]+/', ' ', $arrHeadline[0]), 32, true) . (($arrHeadline[0] != '') ? ', ' : '');
-			$text = $this->String->substr(strip_tags(preg_replace('/[\n\r\t]+/', ' ', $objAlias->text)), 32, true) . (($objAlias->text != '') ? ', ' : '');
+			$headline = $this->StringUtil->substr(preg_replace('/[\n\r\t]+/', ' ', $arrHeadline[0]), 32, true) . (($arrHeadline[0] != '') ? ', ' : '');
+			$text = $this->StringUtil->substr(strip_tags(preg_replace('/[\n\r\t]+/', ' ', $objAlias->text)), 32, true) . (($objAlias->text != '') ? ', ' : '');
 
 			$arrAlias[$objAlias->title][$objAlias->id] = $GLOBALS['TL_LANG']['CTE'][$objAlias->type][0] . ' (' . (strlen($headline) ? $headline : $text) . 'ID ' . $objAlias->id . ')';
 		}

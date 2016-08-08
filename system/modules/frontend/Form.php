@@ -256,7 +256,7 @@ class Form extends Hybrid
 		// Send form data via e-mail
 		if ($this->sendViaEmail)
 		{
-			$this->import('String');
+			$this->import('StringUtil');
 
 			$keys = array();
 			$values = array();
@@ -299,7 +299,7 @@ class Form extends Hybrid
 				}
 			}
 
-			$recipients = $this->String->splitCsv($this->recipient);
+			$recipients = $this->StringUtil->splitCsv($this->recipient);
 
 			// Format recipients
 			foreach ($recipients as $k=>$v)
@@ -361,7 +361,7 @@ class Form extends Hybrid
 			// Attach CSV file
 			if ($this->format == 'csv')
 			{
-				$email->attachFileFromString($this->String->decodeEntities('"' . implode('";"', $keys) . '"' . "\n" . '"' . implode('";"', $values) . '"'), 'form.csv', 'text/comma-separated-values');
+				$email->attachFileFromString($this->StringUtil->decodeEntities('"' . implode('";"', $keys) . '"' . "\n" . '"' . implode('";"', $values) . '"'), 'form.csv', 'text/comma-separated-values');
 			}
 
 			$uploaded = '';
@@ -385,7 +385,7 @@ class Form extends Hybrid
 			$uploaded = strlen(trim($uploaded)) ? "\n\n---\n" . $uploaded : '';
 
 			// Send e-mail
-			$email->text = $this->String->decodeEntities(trim($message)) . $uploaded . "\n\n";
+			$email->text = $this->StringUtil->decodeEntities(trim($message)) . $uploaded . "\n\n";
 			$email->sendTo($recipients);
 		}
 

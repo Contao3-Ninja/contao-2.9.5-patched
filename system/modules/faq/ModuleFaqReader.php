@@ -117,7 +117,7 @@ class ModuleFaqReader extends Module
 			$objPage->description = $this->prepareMetaDescription($objFaq->question); 
 		}
 
-		$this->import('String');
+		$this->import('StringUtil');
 		$this->Template->question = $objFaq->question;
 
 		// Clean RTE output
@@ -125,7 +125,7 @@ class ModuleFaqReader extends Module
 		(
 			array('<u>', '</u>', '</p>', '<br /><br />', ' target="_self"'),
 			array('<span style="text-decoration:underline;">', '</span>', "</p>\n", "<br /><br />\n", ''),
-			$this->String->encodeEmail($objFaq->answer)
+			$this->StringUtil->encodeEmail($objFaq->answer)
 		);
 
 		$this->Template->addImage = false;

@@ -149,8 +149,8 @@ class ModuleBreadcrumb extends Module
 
 					if (strncasecmp($href, 'mailto:', 7) === 0)
 					{
-						$this->import('String');
-						$href = $this->String->encodeEmail($href);
+						$this->import('StringUtil');
+						$href = $this->StringUtil->encodeEmail($href);
 					}
 					break;
 
