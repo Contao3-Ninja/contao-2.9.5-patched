@@ -653,7 +653,7 @@ abstract class Widget extends Controller
 					{
 						foreach ($GLOBALS['TL_HOOKS']['addCustomRegexp'] as $callback)
 						{
-							$this->{$callback[0]};
+							$this->import($callback[0]);
 							$break = $this->{$callback[0]}->{$callback[1]}($this->rgxp, $varInput, $this);
 
 							// Stop the loop if a callback returned true

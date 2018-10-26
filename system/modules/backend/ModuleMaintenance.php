@@ -414,7 +414,7 @@ class ModuleMaintenance extends BackendModule
 			{
 				foreach ($GLOBALS['TL_HOOKS']['getSearchablePages'] as $callback)
 				{
-					$this->{$callback[0]};
+					$this->import($callback[0]);
 					$arrPages = $this->{$callback[0]}->{$callback[1]}($arrPages);
 				}
 			}

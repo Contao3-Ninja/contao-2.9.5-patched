@@ -318,7 +318,7 @@ class DataContainer extends Backend
 		{
 			foreach ($arrData['wizard'] as $callback)
 			{
-				$this->{$callback[0]};
+				$this->import($callback[0]);
 				$wizard .= $this->{$callback[0]}->{$callback[1]}($this);
 			}
 		}

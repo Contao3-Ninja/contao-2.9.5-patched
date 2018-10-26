@@ -102,7 +102,7 @@ class ModuleLogout extends Module
 			{
 				foreach ($GLOBALS['TL_HOOKS']['postLogout'] as $callback)
 				{
-					$this->{$callback[0]};
+					$this->import($callback[0]);
 					$this->{$callback[0]}->{$callback[1]}($this->User);
 				}
 			}

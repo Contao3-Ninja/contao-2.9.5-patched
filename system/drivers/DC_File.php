@@ -66,7 +66,7 @@ class DC_File extends DataContainer implements editable
 			{
 				if (is_array($callback))
 				{
-					$this->{$callback[0]};
+					$this->import($callback[0]);
 					$this->{$callback[0]}->{$callback[1]}($this);
 				}
 			}
@@ -258,7 +258,7 @@ class DC_File extends DataContainer implements editable
 						{
 							if (is_array($callback))
 							{
-								$this->{$callback[0]};
+								$this->import($callback[0]);
 								$this->varValue = $this->{$callback[0]}->{$callback[1]}($this->varValue, $this);
 							}
 						}
@@ -318,7 +318,7 @@ class DC_File extends DataContainer implements editable
 			{
 				foreach ($GLOBALS['TL_DCA'][$this->strTable]['config']['onsubmit_callback'] as $callback)
 				{
-					$this->{$callback[0]};
+					$this->import($callback[0]);
 					$this->{$callback[0]}->{$callback[1]}($this);
 				}
 			}
@@ -408,7 +408,7 @@ window.addEvent(\'domready\', function()
 		{
 			foreach ($arrData['save_callback'] as $callback)
 			{
-				$this->{$callback[0]};
+				$this->import($callback[0]);
 				$varValue = $this->{$callback[0]}->{$callback[1]}($varValue, $this);
 			}
 		}

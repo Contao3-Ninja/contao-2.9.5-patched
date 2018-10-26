@@ -181,7 +181,7 @@ class ModuleSubscribe extends Module
 
 			foreach ($GLOBALS['TL_HOOKS']['activateRecipient'] as $callback)
 			{
-				$this->{$callback[0]};
+				$this->import($callback[0]);
 				$this->{$callback[0]}->{$callback[1]}($objRecipient->email, $arrAdd, $arrCids);
 			}
 		}

@@ -196,7 +196,7 @@ class DC_Table extends DataContainer implements listable, editable
 			{
 				if (is_array($callback))
 				{
-					$this->{$callback[0]};
+					$this->import($callback[0]);
 					$this->{$callback[0]}->{$callback[1]}($this);
 				}
 			}
@@ -702,7 +702,7 @@ class DC_Table extends DataContainer implements listable, editable
 		{
 			foreach ($GLOBALS['TL_DCA'][$this->strTable]['config']['oncut_callback'] as $callback)
 			{
-				$this->{$callback[0]};
+				$this->import($callback[0]);
 				$this->{$callback[0]}->{$callback[1]}($this);
 			}
 		}
@@ -832,7 +832,7 @@ class DC_Table extends DataContainer implements listable, editable
 				{
 					foreach ($GLOBALS['TL_DCA'][$this->strTable]['config']['oncopy_callback'] as $callback)
 					{
-						$this->{$callback[0]};
+						$this->import($callback[0]);
 						$this->{$callback[0]}->{$callback[1]}($insertID, $this);
 					}
 				}
@@ -1284,7 +1284,7 @@ class DC_Table extends DataContainer implements listable, editable
 				{
 					if (is_array($callback))
 					{
-						$this->{$callback[0]};
+						$this->import($callback[0]);
 						$this->{$callback[0]}->{$callback[1]}($this);
 					}
 				}
@@ -1523,7 +1523,7 @@ class DC_Table extends DataContainer implements listable, editable
 						{
 							if (is_array($callback))
 							{
-								$this->{$callback[0]};
+								$this->import($callback[0]);
 								$this->{$callback[0]}->{$callback[1]}($this->intId, $this->strTable, $data, $this->Input->post('version'));
 							}
 						}
@@ -1658,7 +1658,7 @@ class DC_Table extends DataContainer implements listable, editable
 						{
 							if (is_array($callback))
 							{
-								$this->{$callback[0]};
+								$this->import($callback[0]);
 								$this->varValue = $this->{$callback[0]}->{$callback[1]}($this->varValue, $this);
 							}
 						}
@@ -1761,7 +1761,7 @@ class DC_Table extends DataContainer implements listable, editable
 			{
 				foreach ($GLOBALS['TL_DCA'][$this->strTable]['config']['onsubmit_callback'] as $callback)
 				{
-					$this->{$callback[0]};
+					$this->import($callback[0]);
 					$this->{$callback[0]}->{$callback[1]}($this);
 				}
 			}
@@ -2019,7 +2019,7 @@ window.addEvent(\'domready\', function()
 					{
 						foreach ($GLOBALS['TL_DCA'][$this->strTable]['fields'][$this->strField]['load_callback'] as $callback)
 						{
-							$this->{$callback[0]};
+							$this->import($callback[0]);
 							$this->varValue = $this->{$callback[0]}->{$callback[1]}($this->varValue, $this);
 						}
 					}
@@ -2044,7 +2044,7 @@ window.addEvent(\'domready\', function()
 					{
 						foreach ($GLOBALS['TL_DCA'][$this->strTable]['config']['onsubmit_callback'] as $callback)
 						{
-							$this->{$callback[0]};
+							$this->import($callback[0]);
 							$this->{$callback[0]}->{$callback[1]}($this);
 						}
 					}
@@ -2261,7 +2261,7 @@ window.addEvent(\'domready\', function()
 						{
 							foreach ($GLOBALS['TL_DCA'][$this->strTable]['config']['onsubmit_callback'] as $callback)
 							{
-								$this->{$callback[0]};
+								$this->import($callback[0]);
 								$this->{$callback[0]}->{$callback[1]}($this);
 							}
 						}
@@ -2511,7 +2511,7 @@ window.addEvent(\'domready\', function()
 		{
 			foreach ($arrData['save_callback'] as $callback)
 			{
-				$this->{$callback[0]};
+				$this->import($callback[0]);
 				$varValue = $this->{$callback[0]}->{$callback[1]}($varValue, $this);
 			}
 		}
@@ -2669,7 +2669,7 @@ window.addEvent(\'domready\', function()
 		{
 			foreach ($GLOBALS['TL_HOOKS']['reviseTable'] as $callback)
 			{
-				$this->{$callback[0]};
+				$this->import($callback[0]);
 				$status = $this->{$callback[0]}->{$callback[1]}($this->strTable, $new_records[$this->strTable], $ptable, $ctable);
 
 				if ($status === true)

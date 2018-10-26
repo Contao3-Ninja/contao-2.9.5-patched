@@ -372,7 +372,7 @@ class tl_comments extends Backend
 				{
 					foreach ($GLOBALS['TL_HOOKS']['isAllowedToEditComment'] as $callback)
 					{
-						$this->{$callback[0]};
+						$this->import($callback[0]);
 
 						if ($this->{$callback[0]}->{$callback[1]}($intParent, $strSource) === true)
 						{
@@ -455,7 +455,7 @@ class tl_comments extends Backend
 				{
 					foreach ($GLOBALS['TL_HOOKS']['listComments'] as $callback)
 					{
-						$this->{$callback[0]};
+						$this->import($callback[0]);
 
 						if (($tmp = $this->{$callback[0]}->{$callback[1]}($arrRow)) != '')
 						{
@@ -577,7 +577,7 @@ class tl_comments extends Backend
 		{
 			foreach ($GLOBALS['TL_DCA']['tl_comments']['fields']['published']['save_callback'] as $callback)
 			{
-				$this->{$callback[0]};
+				$this->import($callback[0]);
 				$blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $this);
 			}
 		}

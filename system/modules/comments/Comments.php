@@ -276,7 +276,7 @@ class Comments extends Frontend
 			{
 				foreach ($GLOBALS['TL_HOOKS']['addComment'] as $callback)
 				{
-					$this->{$callback[0]};
+					$this->import($callback[0]);
 					$this->{$callback[0]}->{$callback[1]}($insertId, $arrSet);
 				}
 			}

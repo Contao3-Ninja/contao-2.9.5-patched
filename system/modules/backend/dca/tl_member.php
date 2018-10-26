@@ -422,7 +422,7 @@ class tl_member extends Backend
 			{
 				foreach ($GLOBALS['TL_HOOKS']['setNewPassword'] as $callback)
 				{
-					$this->{$callback[0]};
+					$this->import($callback[0]);
 					$this->{$callback[0]}->{$callback[1]}($objUser, $strPassword);
 				}
 			}
@@ -515,7 +515,7 @@ class tl_member extends Backend
 		{
 			foreach ($GLOBALS['TL_DCA']['tl_member']['fields']['disable']['save_callback'] as $callback)
 			{
-				$this->{$callback[0]};
+				$this->import($callback[0]);
 				$blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $this);
 			}
 		}

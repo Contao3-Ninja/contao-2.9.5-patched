@@ -120,7 +120,7 @@ class ModuleCloseAccount extends Module
 				{
 					foreach ($GLOBALS['TL_HOOKS']['closeAccount'] as $callback)
 					{
-						$this->{$callback[0]};
+						$this->import($callback[0]);
 						$this->{$callback[0]}->{$callback[1]}($this->User->id, $this->reg_close, $this);
 					}
 				}

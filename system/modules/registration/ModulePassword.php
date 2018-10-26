@@ -241,7 +241,7 @@ class ModulePassword extends Module
 				{
 					foreach ($GLOBALS['TL_HOOKS']['setNewPassword'] as $callback)
 					{
-						$this->{$callback[0]};
+						$this->import($callback[0]);
 						$this->{$callback[0]}->{$callback[1]}($objMember, $objWidget->value);
 					}
 				}
