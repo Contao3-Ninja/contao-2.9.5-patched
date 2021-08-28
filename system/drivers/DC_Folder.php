@@ -72,7 +72,7 @@ class DC_Folder extends DataContainer implements listable, editable
 	public function __construct($strTable)
 	{
 		parent::__construct();
-		$this->import('String');
+		$this->import('StringUtil','String');
 
 		$this->intId = $this->Input->get('id', true);
 
