@@ -3071,7 +3071,7 @@ window.addEvent(\'domready\', function()
 		// Shorten label it if it is too long
 		if ($GLOBALS['TL_DCA'][$table]['list']['label']['maxCharacters'] > 0 && $GLOBALS['TL_DCA'][$table]['list']['label']['maxCharacters'] < strlen(strip_tags($label)))
 		{
-			$this->import('String');
+			$this->import('StringUtil','String');
 			$label = trim($this->String->substrHtml($label, $GLOBALS['TL_DCA'][$table]['list']['label']['maxCharacters'])) . ' …';
 		}
 
@@ -3775,7 +3775,7 @@ Backend.makeParentViewSortable("ul_' . CURRENT_ID . '");
 
 				if ($GLOBALS['TL_DCA'][$this->strTable]['list']['label']['maxCharacters'] > 0 && $GLOBALS['TL_DCA'][$this->strTable]['list']['label']['maxCharacters'] < strlen(strip_tags($label)))
 				{
-					$this->import('String');
+					$this->import('StringUtil','String');
 					$label = trim($this->String->substrHtml($label, $GLOBALS['TL_DCA'][$this->strTable]['list']['label']['maxCharacters'])) . ' …';
 				}
 
